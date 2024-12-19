@@ -1,0 +1,89 @@
+﻿@model PagedList.IPagedList<W2.Product>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<link href="~/style.css" rel="stylesheet" />
+<h2 class="d-flex justify-content-center">Đây là trang danh mục</h2>
+
+<p class="d-flex justify-content-around ">
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p class="d-flex justify-content-end">
+        Tìm rượu theo tên:   @Html.TextBox("searchString")
+        <input type="submit" value="Tìm Kiếm" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            Tên danh mục
+        </th>
+        <th>
+            @Html.ActionLink("Tên hàng", "Index", new { sortOrder = ViewBag.SapxepTheoTen })
+        </th>
+
+        <th>
+            @Html.ActionLink("Giá", "Index", new { sortOrder = ViewBag.SapxepTheoGia })
+        </th>
+        <th>
+            Số lượng
+        </th>      
+        <th>
+            Hình ảnh
+        </th>
+        <th>
+            Vùng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Catalogy.CatalogyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+           
+
+            <td>
+                @{
+                    string ImagePath = "~/wwwroot/WineImages/" + item.Image;
+                }
+                <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+                <br />
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.ProductID }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.ProductID }) |
+                @Html.ActionLink("Xoá", "Delete", new { id = item.ProductID })
+            </td>
+        </tr>
+    }
+
+</table>
+Trang @(Model.PageCount < Model.PageNumber ? 0: Model.PageNumber ) / @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFiller = ViewBag.CurrentFiller }))

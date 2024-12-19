@@ -1,0 +1,82 @@
+﻿
+/* Tùy chỉnh bảng */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+    /*#aa{
+    background-color: wheat;
+}*/
+    .table th, .table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .table th {
+        background-color: wheat;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+/* Tùy chỉnh liên kết */
+.action-links a {
+    text-decoration: none;
+    margin-right: 10px;
+    color: #007bff;
+    font-weight: bold;
+}
+
+    .action-links a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+/* Thêm border cho từng mục */
+ul.pagination li {
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 10px;
+    display: flex;
+}
+
+    /* Thêm hiệu ứng hover */
+    ul.pagination li a:hover {
+        background-color: wheat;
+    }
+
+    /* Kiểm soát màu sắc trang hiện tại */
+    ul.pagination li.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+
+.nav-link {
+    color: #ddd; /* Màu chữ ban đầu */
+    text-decoration: none; /* Bỏ gạch chân */
+    padding: 5px 10px; /* Tùy chỉnh khoảng cách bên trong */
+    transition: color 0.3s, background-color 0.3s; /* Hiệu ứng mượt khi thay đổi màu */
+}
+
+    .nav-link:hover {
+        color: #fff; /* Màu chữ khi hover */
+        background-color: #007bff; /* Nền khi hover (ví dụ: màu xanh) */
+        border-radius: 5px; /* Bo tròn góc */
+    }
+/*button {
+    border: 2px solid #4CAF50;*/ /* Viền xanh lá dày 2px */
+    /*border-radius: 4px;*/ /* Góc bo tròn 8px */
+    /*border-style: solid;*/ /* Đường viền dạng liền mạch */
+    /*border-color: #4CAF50;*/ /* Màu xanh lá */
+    /*padding: 10px 20px;*/ /* Khoảng cách nội dung nút */
+    /*font-size: 16px;*/ /* Kích thước chữ */
+    /*cursor: pointer;*/ /* Hiển thị con trỏ khi hover */
+/*}*/
